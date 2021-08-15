@@ -1,0 +1,20 @@
+name: Get & save NFT trend data hourly
+
+on:
+  schedule:
+    - cron: '37 * * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Create local changes
+        run: node convert.js
+      - name: Commit & Push changes
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
