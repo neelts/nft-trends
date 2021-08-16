@@ -18,6 +18,6 @@ jobs:
       - name: Create local changes
         run: node index.js
       - name: Commit & Push changes
-        uses: actions-js/push@main
+        uses: actions-js/push@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
