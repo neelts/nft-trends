@@ -3,6 +3,9 @@ name: Get & save NFT trend data hourly
 on:
   schedule:
     - cron: '37 * * * *'
+  push:
+    branches:
+      - main
 
 jobs:
   build:
