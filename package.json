@@ -10,7 +10,7 @@
     "google-trends-api": "^4.9.2"
   },
   "devDependencies": {
-    "@types/node": "^16.6.1"
+    "@types/node": "^18.11.9"
   },
   "keywords": [],
   "author": "",
