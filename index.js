@@ -19,7 +19,7 @@ const period = (time) => __awaiter(void 0, void 0, void 0, function* () {
         console.log(e);
     }
 });
-const sleep = () => new Promise(resolve => setTimeout(() => resolve(), 1000));
+const sleep = () => new Promise(resolve => setTimeout(() => resolve(), 5000));
 const get = () => __awaiter(void 0, void 0, void 0, function* () {
     const day = 24 * 60 * 60 * 1000;
     const month = day * 30;
