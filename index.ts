@@ -25,27 +25,25 @@ const period = async (time?: number): Promise<Data> => {
     }
 }
 
-const sleep = (): Promise<void> => new Promise<void>(resolve => setTimeout(() => resolve(), 1000));
+const sleep = (s: number): Promise<void> => new Promise<void>(resolve => setTimeout(() => resolve(), s * 1000));
 
 const get = async (): Promise<void> => {
-
-
 
     const day = 24 * 60 * 60 * 1000;
     const month = day * 30;
     const year = day * 355;
 
     const request = async (request: () => Promise<Data>): Promise<Data> => {
-        let retries: number = 10;
+        let retries: number = 1;
         do {
             const data: Data = await request();
-            await sleep();
+            await sleep(retries);
             console.log('>>> ' + retries);
             if (data?.default?.timelineData)
                 return data;
             else
-                retries--;
-        } while (retries > 0);
+                retries++;
+        } while (retries < 100);
         return null;
     };
 

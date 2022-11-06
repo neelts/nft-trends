@@ -26,16 +26,16 @@ const get = () => __awaiter(void 0, void 0, void 0, function* () {
     const year = day * 355;
     const request = (request) => __awaiter(void 0, void 0, void 0, function* () {
         var _a;
-        let retries = 10;
+        let retries = 1;
         do {
             const data = yield request();
-            yield sleep();
+            yield sleep(retries);
             console.log('>>> ' + retries);
             if ((_a = data === null || data === void 0 ? void 0 : data.default) === null || _a === void 0 ? void 0 : _a.timelineData)
                 return data;
             else
-                retries--;
-        } while (retries > 0);
+                retries++;
+        } while (retries < 100);
         return null;
     });
     const transform = (data) => data.default.timelineData.map(value => [value.time, value.formattedTime, `${value.value[0]}`]);
